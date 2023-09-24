@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 
 #include "App.h"
-#include "MainPage.h"
+#include "OpenGLESPage.h"
 
 using namespace winrt;
 using namespace Windows::ApplicationModel;
@@ -10,8 +10,8 @@ using namespace Windows::Foundation;
 using namespace Windows::UI::Xaml;
 using namespace Windows::UI::Xaml::Controls;
 using namespace Windows::UI::Xaml::Navigation;
-using namespace HelloCpp;
-using namespace HelloCpp::implementation;
+using namespace AxmolAppWinRT;
+using namespace AxmolAppWinRT::implementation;
 
 /// <summary>
 /// Creates the singleton application object.  This is the first line of authored code
@@ -70,7 +70,7 @@ void App::OnLaunched(LaunchActivatedEventArgs const& e)
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(xaml_typename<HelloCpp::MainPage>(), box_value(e.Arguments()));
+                rootFrame.Navigate(xaml_typename<AxmolAppWinRT::OpenGLESPage>(), box_value(e.Arguments()));
             }
             // Place the frame in the current Window
             Window::Current().Content(rootFrame);
@@ -87,7 +87,7 @@ void App::OnLaunched(LaunchActivatedEventArgs const& e)
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(xaml_typename<HelloCpp::MainPage>(), box_value(e.Arguments()));
+                rootFrame.Navigate(xaml_typename<AxmolAppWinRT::OpenGLESPage>(), box_value(e.Arguments()));
             }
             // Ensure the current window is active
             Window::Current().Activate();

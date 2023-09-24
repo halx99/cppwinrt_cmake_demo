@@ -4,7 +4,7 @@
     <ApplicationDefinition Include="App.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainPage.xaml" />
+    <Page Include="OpenGLESPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />

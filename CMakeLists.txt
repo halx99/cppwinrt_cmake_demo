@@ -44,21 +44,21 @@ endmacro(source_group_by_dir)
 set(HEADER_FILES
   pch.h
   App.h
-  MainPage.h
+  OpenGLESPage.h
   )
   
 set(SOURCE_FILES
   pch.cpp
   App.cpp
-  MainPage.cpp
+  OpenGLESPage.cpp
   )
 
 set(XAML_FILES
   App.xaml
-  MainPage.xaml
+  OpenGLESPage.xaml
   )
 
-set(IDL_FILES App.idl MainPage.idl)
+set(IDL_FILES App.idl OpenGLESPage.idl)
   
 file(GLOB_RECURSE ASSET_FILES
     Assets/*.png
@@ -78,11 +78,11 @@ set_property(
     "DependentUpon=${APP_XAML_FULL_PATH}"
 )
 
-file(TO_NATIVE_PATH "${CMAKE_CURRENT_LIST_DIR}/MainPage.xaml" MAINPAGE_XAML_FULL_PATH)
+file(TO_NATIVE_PATH "${CMAKE_CURRENT_LIST_DIR}/OpenGLESPage.xaml" OPENGLESPAGE_XAML_FULL_PATH)
 set_property(
-    SOURCE MainPage.h MainPage.cpp MainPage.idl
+    SOURCE OpenGLESPage.h OpenGLESPage.cpp OpenGLESPage.idl
     PROPERTY VS_SETTINGS
-    "DependentUpon=${MAINPAGE_XAML_FULL_PATH}"
+    "DependentUpon=${OPENGLESPAGE_XAML_FULL_PATH}"
 )
 
 set(RESOURCE_FILES ${CONTENT_FILES} ${ASSET_FILES})
@@ -106,14 +106,15 @@ set_target_properties(
   CXX_STANDARD 20
   CXX_STANDARD_REQUIRED ON
   CXX_EXTENSIONS OFF
+  RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin/${APP_NAME}"
   # ----- C++/WinRT, Windows App SDK, and WinUI stuff starts here -----
   VS_GLOBAL_CppWinRTOptimized true
   VS_GLOBAL_CppWinRTRootNamespaceAutoMerge true
   VS_GLOBAL_CppWinRTGenerateWindowsMetadata true
   VS_GLOBAL_MinimalCoreWin true
   VS_GLOBAL_AppContainerApplication true
-  VS_GLOBAL_ApplicationType "Windows Store"
-  VS_GLOBAL_RootNameSpace ${APP_NAME} # fix Generated Files\XamlMetaDataProvider.idl(4): error MIDL2025: [msg]syntax error [context]: expecting NamespaceTag near "{"
+  # VS_GLOBAL_ApplicationType "Windows Store"
+  VS_GLOBAL_RootNameSpace "AxmolAppWinRT" # this is important for cppwirnt to fix Generated Files\XamlMetaDataProvider.idl(4): error MIDL2025: [msg]syntax error [context]: expecting NamespaceTag near "{"
 )
 
 # cmake write <Midl> will cause directory error
