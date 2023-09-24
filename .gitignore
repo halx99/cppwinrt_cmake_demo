@@ -1,0 +1,6 @@
+build*
+Generated Files
+x64
+.vs
+
+/**/packages
